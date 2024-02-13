@@ -6,8 +6,11 @@
         <table>
             <tr>
                 @foreach ($apoderados as $apoderados)
-                    <td><a href="{{route('apoderado.show',$apoderados->ApoderadoID)}}">{{$apoderados->ApoderadoApellidos}}</a></td>
+                    <td><a href="{{route('apoderado.show',$apoderados)}}">{{$apoderados->ApoderadoApellidos}}</a></td>
                 @endforeach
+            </tr>
+            <tr>
+                <td><a href="{{route('apoderado.create')}}">REGISTRAR NUEVO APODERADO</a></td>
             </tr>
         </table>
     @else
