@@ -26,4 +26,3 @@ Route::patch('apoderados/{apoderados}','App\Http\Controllers\ApoderadoController
 Route::post('apoderados','App\Http\Controllers\ApoderadoController@store')->name('apoderado.store');
 Route::get('apoderados/{ApoderadoID}','App\Http\Controllers\ApoderadoController@show')->name('apoderado.show');
 Route::delete('apoderados/{apoderados}','App\Http\Controllers\ApoderadoController@destroy')->name('apoderado.destroy');
-
