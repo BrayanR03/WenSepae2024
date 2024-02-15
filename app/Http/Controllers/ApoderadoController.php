@@ -12,7 +12,7 @@ class ApoderadoController extends Controller
     public function index()
     {
         $apoderados=Apoderado::get();
-        return view('apoderados',compact('apoderados'));
+        return view('apoderados.apoderados',compact('apoderados'));
     }
 
     /**
@@ -20,7 +20,7 @@ class ApoderadoController extends Controller
      */
     public function create()
     {
-        return view('apoderadocreate',[
+        return view('apoderados.apoderadocreate',[
             'apoderados'=>new Apoderado
         ]);
     }
@@ -40,7 +40,7 @@ class ApoderadoController extends Controller
      */
     public function show($ApoderadoID)
     {
-        return view('apoderadoshow',[
+        return view('apoderados.apoderadoshow',[
             'apoderados'=>Apoderado::find($ApoderadoID)
         ]);
     }
@@ -50,7 +50,7 @@ class ApoderadoController extends Controller
      */
     public function edit(Apoderado $apoderado)
     {
-        return view('apoderadoedit',[
+        return view('apoderados.apoderadoedit',[
             'apoderados'=>$apoderado
         ]);
     }
