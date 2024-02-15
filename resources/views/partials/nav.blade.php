@@ -12,7 +12,7 @@
         <tr>
             <td><a href="/">INICIO</a></td>
             <td><a href="{{route('apoderados.index')}}">APODERADO</a></td>
-            <td><a href="#">ALUMNOS</a></td>
+            <td><a href="{{route('alumnos.index')}}">ALUMNOS</a></td>
         </tr>
     </table>
 </body>
