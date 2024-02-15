@@ -11,7 +11,7 @@
     <table>
         <tr>
             <td><a href="/">INICIO</a></td>
-            <td><a href="{{route('apoderado.index')}}">APODERADO</a></td>
+            <td><a href="{{route('apoderados.index')}}">APODERADO</a></td>
             <td><a href="#">ALUMNOS</a></td>
         </tr>
     </table>

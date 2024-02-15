@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/','home');
+
+Route::resource('apoderados','App\Http\Controllers\ApoderadoController')->names('apoderados');
 /*
-Route::resource('apoderados','App\Http\Controllers\ApoderadoController')->name('apoderados');
-*/
 Route::get('apoderados','App\Http\Controllers\ApoderadoController@index')->name('apoderado.index');
 Route::get('apoderados/crear','App\Http\Controllers\ApoderadoController@create')->name('apoderado.create');
 
@@ -26,3 +26,4 @@ Route::patch('apoderados/{apoderados}','App\Http\Controllers\ApoderadoController
 Route::post('apoderados','App\Http\Controllers\ApoderadoController@store')->name('apoderado.store');
 Route::get('apoderados/{ApoderadoID}','App\Http\Controllers\ApoderadoController@show')->name('apoderado.show');
 Route::delete('apoderados/{apoderados}','App\Http\Controllers\ApoderadoController@destroy')->name('apoderado.destroy');
+*/

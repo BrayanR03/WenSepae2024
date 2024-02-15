@@ -40,6 +40,6 @@
         <td><button>{{$btnText}}</button></td>
     </tr>
     <tr>
-        <td><a href="{{route('apoderado.index')}}">REGRESAR</a></td>
+        <td><a href="{{route('apoderados.index')}}">REGRESAR</a></td>
     </tr>
 </table>

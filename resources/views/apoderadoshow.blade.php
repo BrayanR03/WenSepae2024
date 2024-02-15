@@ -28,10 +28,10 @@
             <td>{{$apoderados->ApoderadoEmail}}</td>
         </tr>
         <tr>
-            <td><a href="{{route('apoderado.edit',$apoderados)}}">EDITAR</a></td>
+            <td><a href="{{route('apoderados.edit',$apoderados)}}">EDITAR</a></td>
         </tr>
         <tr>
-            <form action="{{route('apoderado.destroy',$apoderados)}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('apoderados.destroy',$apoderados)}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('DELETE')
             <button>Eliminar</button>

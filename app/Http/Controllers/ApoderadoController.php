@@ -32,7 +32,7 @@ class ApoderadoController extends Controller
     {
         $apoderados=new Apoderado($request->validated());
         $apoderados->save();
-        return redirect()->route('apoderado.index');
+        return redirect()->route('apoderados.index');
     }
 
     /**
@@ -48,38 +48,38 @@ class ApoderadoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Apoderado $apoderados)
+    public function edit(Apoderado $apoderado)
     {
         return view('apoderadoedit',[
-            'apoderados'=>$apoderados
+            'apoderados'=>$apoderado
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Apoderado $apoderados,CreateApoderadoRequest $request)
+    public function update(Apoderado $apoderado,CreateApoderadoRequest $request)
     {
         if ($request->hasFile('image')) {
-            Storage::delete($apoderados->image);
-            $apoderados->fill($request->validated());
-            $apoderados->image=$request->file('image')->store('images');
-            $apoderados->save();
+            Storage::delete($apoderado->image);
+            $apoderado->fill($request->validated());
+            $apoderado->image=$request->file('image')->store('images');
+            $apoderado->save();
           } else {
             
-          $apoderados->update(array_filter($request->validated()));
+          $apoderado->update(array_filter($request->validated()));
           }
           
-          return redirect()->route('apoderado.show',$apoderados);
+          return redirect()->route('apoderados.show',$apoderado);
         
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Apoderado $apoderados)
+    public function destroy(Apoderado $apoderado)
     {
-        $apoderados->delete();
-        return redirect()->route('apoderado.index');   
+        $apoderado->delete();
+        return redirect()->route('apoderados.index');   
     }
 }
