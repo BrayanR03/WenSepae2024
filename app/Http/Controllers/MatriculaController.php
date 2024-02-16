@@ -13,7 +13,7 @@ class MatriculaController extends Controller
     public function index()
     {
         $matriculas=Matricula::get();
-        return view('matriculas',compact('matriculas'));
+        return view('matriculas.matriculas',compact('matriculas'));
     }
 
     /**
@@ -21,7 +21,7 @@ class MatriculaController extends Controller
      */
     public function create()
     {
-        return view('matriculascreate',[
+        return view('matriculas.matriculascreate',[
             'matriculas'=>new Matricula
         ]);
     }
@@ -41,7 +41,7 @@ class MatriculaController extends Controller
      */
     public function show($MatriculaID)
     {
-        return view('matriculasshow',[
+        return view('matriculas.matriculasshow',[
             'matriculas'=>Matricula::find($MatriculaID)
         ]);
     }
@@ -51,7 +51,7 @@ class MatriculaController extends Controller
      */
     public function edit(Matricula $matricula)
     {
-        return view('matriculasedit',[
+        return view('matriculas.matriculasedit',[
             'matriculas'=>$matricula
         ]);
     }
@@ -64,7 +64,7 @@ class MatriculaController extends Controller
         if ($request->hasFile('matricula')) {
             Storage::delete($matricula->image);
             $matricula->fill($request->validated());
-            $matricula->image=$request('image')->storage('images');
+            $matricula->image=$request->file('image')->store('images');
             $matricula->save();
         } else {
             

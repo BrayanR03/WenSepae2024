@@ -64,7 +64,7 @@ class AlumnoController extends Controller
         if ($request->hasFile('image')) {
             Storage::delete($alumno->image);
             $alumno->fill($request->validated());
-            $alumno->image=$request->image('image')->store('images');
+            $alumno->image=$request->file('image')->store('images');
             $alumno->save();
         } else {
             $alumno->update(array_filter($request->validated()));

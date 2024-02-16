@@ -65,7 +65,7 @@ class DocenteController extends Controller
         if ($request->hasFile('image')) {
             Storage::delete($docente->image);
             $docente->fill($request->validated());
-            $docente->image=$request('image')->storage('images');
+            $docente->image=$request->file('image')->store('images');
             $docente->save();
         } else {
             $docente->update(array_filter($request->validated()));

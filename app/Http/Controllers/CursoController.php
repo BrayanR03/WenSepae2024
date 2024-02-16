@@ -66,7 +66,7 @@ class CursoController extends Controller
         if ($request->hasFile('image')) {
             Storage::delete($curso->image);
             $curso->fill($request->validated());
-            $curso->image==$request('image')->storage('images');
+            $curso->image=$request->file('image')->store('images');
             $curso->save();
         } else {
             

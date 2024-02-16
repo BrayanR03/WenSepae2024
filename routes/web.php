@@ -20,6 +20,7 @@ Route::resource('alumnos','App\Http\Controllers\AlumnoController')->names('alumn
 Route::resource('docentes','App\Http\Controllers\DocenteController')->names('docentes');
 Route::resource('cursos','App\Http\Controllers\CursoController')->names('cursos');
 Route::resource('matriculas','App\Http\Controllers\MatriculaController')->names('matriculas');
+Route::resource('asistencias','App\Http\Controllers\AsistenciaController')->names('asistencias');
 /*
 Route::get('apoderados','App\Http\Controllers\ApoderadoController@index')->name('apoderado.index');
 Route::get('apoderados/crear','App\Http\Controllers\ApoderadoController@create')->name('apoderado.create');
