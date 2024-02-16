@@ -13,7 +13,7 @@ class DocenteController extends Controller
     public function index()
     {
         $docentes=Docente::get();
-        return view('docentes',compact('docentes'));
+        return view('docentes.docentes',compact('docentes'));
     }
 
     /**
@@ -21,7 +21,7 @@ class DocenteController extends Controller
      */
     public function create()
     {
-        return view('docentecreate',[
+        return view('docentes.docentecreate',[
             'docentes'=>new Docente
         ]);
     }
@@ -41,7 +41,7 @@ class DocenteController extends Controller
      */
     public function show($DocenteID)
     {
-        return view('docentesshow',[
+        return view('docentes.docentesshow',[
             'docentes'=>Docente::find($DocenteID)
         ]);
     }
@@ -51,7 +51,7 @@ class DocenteController extends Controller
      */
     public function edit(Docente $docente)
     {
-        return view('docenteedit',[
+        return view('docentes.docenteedit',[
             'docentes'=>$docente
         ]);
         

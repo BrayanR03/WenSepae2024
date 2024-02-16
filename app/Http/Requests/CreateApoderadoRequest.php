@@ -37,7 +37,7 @@ class CreateApoderadoRequest extends FormRequest
     public function messages(){
 
         return [
-            'ApoderadoApellidos.required'=>'El Campo Apellido es Oblugatorio',
+            'ApoderadoApellidos.required'=>'El Campo Apellido es Obligatorio',
             'ApoderadoNombres.required'=>'El Campo Nombres es Obligatorio',
             'ApoderadoDni.required'=>'El Campo Dni es Obligatorio',
             'ApoderadoFechaNacimiento.required'=>'El Campo Fecha Nacimiento es Obligatorio',

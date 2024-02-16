@@ -31,7 +31,7 @@ class CreateDocenteRequest extends FormRequest
         ];
     }
 
-    public function messagess(){
+    public function messages(){
 
         return [
             'DocenteApellidos.required'=>'El Campo Apellidos es Obligatorio',
