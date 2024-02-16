@@ -13,7 +13,7 @@ class CursoController extends Controller
     public function index()
     {
         $cursos=Curso::get();
-        return view('cursos',compact('cursos'));
+        return view('cursos.cursos',compact('cursos'));
     }
 
     /**
@@ -21,7 +21,7 @@ class CursoController extends Controller
      */
     public function create()
     {
-        return view('cursoscreate',[
+        return view('cursos.cursoscreate',[
             'cursos'=>new Curso
         ]);
     }
@@ -43,7 +43,7 @@ class CursoController extends Controller
      */
     public function show($CursoID)
     {
-        return view('cursosshow',[
+        return view('cursos.cursosshow',[
             'cursos'=>Curso::find($CursoID)
         ]);
     }
@@ -53,7 +53,7 @@ class CursoController extends Controller
      */
     public function edit(Curso $curso)
     {
-        return view('cursosedit',[
+        return view('cursos.cursosedit',[
             'cursos'=>$curso
         ]);
     }
