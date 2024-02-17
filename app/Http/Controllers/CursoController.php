@@ -16,6 +16,11 @@ class CursoController extends Controller
         return view('cursos.cursos',compact('cursos'));
     }
 
+    public function cursosasignados(){
+
+        $cursos=Curso::get();
+        return view('cursoslistado',compact('cursos'));
+    }
     /**
      * Show the form for creating a new resource.
      */

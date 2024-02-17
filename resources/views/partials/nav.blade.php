@@ -14,7 +14,7 @@
             <td><a href="{{route('apoderados.index')}}">APODERADO</a></td>
             <td><a href="{{route('alumnos.index')}}">ALUMNOS</a></td>
             <td><a href="{{route('docentes.index')}}">DOCENTES</a></td>
-            <td><a href="{{route('cursos.index')}}">CURSOS</a></td>
+            <td><a href="{{route('cursos.asignado')}}">CURSOS</a></td>
             <td><a href="{{route('matriculas.index')}}">MATRICULAS</a></td>
             <td><a href="{{route('asistencias.index')}}">ASISTENCIAS</a></td>
         </tr>
