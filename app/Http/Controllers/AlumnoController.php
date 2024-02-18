@@ -81,4 +81,35 @@ class AlumnoController extends Controller
         $alumno->delete();
         return redirect()->route('alumnos.index');
     }
+
+    public function buscarAlumno(Request $request)
+{
+    $tipo_busqueda = $request->tipo_busqueda;
+    $dni_apellidos = $request->dni_apellidos;
+
+    // Lógica de búsqueda según el tipo seleccionado
+    if ($tipo_busqueda == 'AlumnoDni') {
+        $alumno = Alumno::where('AlumnoDni', $dni_apellidos)->first();
+    } else {
+        $alumno = Alumno::where('AlumnoApellidos', 'LIKE', "%$dni_apellidos%")->first();
+    } 
+
+    if ($alumno) {
+        $datosalumno = $alumno->AlumnoApellidos . ', ' . $alumno->AlumnoPrimerNombre;
+        $alumnoid = $alumno->AlumnoID;
+    } else {
+        $datosalumno = '';
+        $alumnoid = '';
+    }
+    if ($alumno) {
+        return response()->json([
+            'datosalumno' => $alumno->AlumnoApellidos . ', ' . $alumno->AlumnoPrimerNombre,
+            'alumnoid' => $alumno->AlumnoID
+        ]);
+    } else {
+        return response()->json(['error' => 'El Alumno No se Encuentra Registrado'], 404);
+    }
+    
+}
+
 }

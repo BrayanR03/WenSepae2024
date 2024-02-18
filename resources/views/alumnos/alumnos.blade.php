@@ -5,10 +5,14 @@
     @if ($alumnos)
         <table>
             <tr>
-                @foreach ($alumnos as $alumnos)
-                    <td><a href="{{route('alumnos.show',$alumnos)}}">{{$alumnos->AlumnoApellidos.' '.$alumnos->AlumnoPrimerNombre}}</a></td>
-                @endforeach
+                <th>Alumno</th>
             </tr>
+                @foreach ($alumnos as $alumnos)
+                <tr>
+                    <td><a href="{{route('alumnos.show',$alumnos)}}">{{$alumnos->AlumnoApellidos.' '.$alumnos->AlumnoPrimerNombre}}</a></td>
+                
+                </tr>
+                @endforeach
             <tr>
                 <td><a href="{{route('alumnos.create')}}">REGISTRAR NUEVO ALUMNO</a></td>
             </tr>

@@ -22,6 +22,9 @@ Route::resource('cursos','App\Http\Controllers\CursoController')->names('cursos'
 Route::resource('matriculas','App\Http\Controllers\MatriculaController')->names('matriculas');
 Route::resource('asistencias','App\Http\Controllers\AsistenciaController')->names('asistencias');
 Route::get('cursosasignados','App\Http\Controllers\CursoController@cursosasignados')->name('cursos.asignado');
+Route::view('register','registromatricula')->name('register');
+Route::get('buscar-alumno', 'App\Http\Controllers\AlumnoController@buscarAlumno')->name('buscarAlumno');
+
 /*
 Route::get('apoderados','App\Http\Controllers\ApoderadoController@index')->name('apoderado.index');
 Route::get('apoderados/crear','App\Http\Controllers\ApoderadoController@create')->name('apoderado.create');
