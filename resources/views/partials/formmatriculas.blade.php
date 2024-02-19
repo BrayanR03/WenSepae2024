@@ -3,7 +3,7 @@
 <table>
     <tr>
         <th>FECHA DE REGISTRO</th>
-        <td><input type="date" name="MatriculaFechaRegistro" id="MatriculaFechaRegistro" value="<?php echo date("Y-m-d");?>"></td>
+        <td><input type="date" name="MatriculaFechaRegistro" id="MatriculaFechaRegistro" value="{{$fechita}}"></td>
     </tr>
     <tr>
         <th>AlumnoID</th>
@@ -11,6 +11,6 @@
         
     </tr>
     <tr>
-        <td><button>{{$btnText}}</button></td>
+    <td><button>{{$btnText}}</button></td>
     </tr>
 </table>

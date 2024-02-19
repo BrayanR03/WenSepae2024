@@ -81,7 +81,7 @@ class AlumnoController extends Controller
         $alumno->delete();
         return redirect()->route('alumnos.index');
     }
-
+    
     public function buscarAlumno(Request $request)
 {
     $tipo_busqueda = $request->tipo_busqueda;

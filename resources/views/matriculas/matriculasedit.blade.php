@@ -5,6 +5,6 @@
     @include('partials.validations-errors')
     <form action="{{route('matriculas.update',$matriculas)}}" method="post" enctype="multipart/form-data">
     @method('PATCH')
-    @include('partials.formmatriculas',['btnText'=>'Actualizar'])
+    @include('partials.formmatriculas',['btnText'=>'Actualizar','fechita'=>$matriculas->MatriculaFechaRegistro])
     </form>
 @endsection

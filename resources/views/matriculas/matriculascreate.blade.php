@@ -21,9 +21,9 @@
         </td>
         </tr>
         <tr>
-            <th>Alumno ID</th>
+            
             <td>
-                <input type="text" name="alumnoid" id="alumnoid" value="{{old('alumnoid')}}">
+                <input type="hidden" name="alumnoid" id="alumnoid" value="{{old('alumnoid')}}">
             </td>
         </tr>
     </table>
@@ -47,7 +47,7 @@
                 // Actualizar los inputs con los datos recibidos
                 $('#datosalumno').val(response.datosalumno);
                 $('#alumnoid').val(response.alumnoid);
-                
+                $('#AlumnoID').val(response.alumnoid);
                 // Ocultar el cuadro de diálogo de alerta si estaba mostrándose
                 if ($('#alert-dialog').length) {
                     $('#alert-dialog').hide();
@@ -67,31 +67,19 @@
 
     // Escuchar el envío del formulario de registro de matrícula
     $('#form-registrar-matricula').submit(function(event) {
-        // Aquí coloca tu lógica para enviar el formulario de registro de matrícula
         
-        var alumnoidValue = $('#form-buscar-alumno').find('#alumnoid').val();
-        console.log(alumnoidValue)
     });
 });
 
     </script>
     
     <form id="form-registrar-matricula" name="form-registrar-matricula" action="{{route('matriculas.store')}}" method="post" enctype="multipart/form-data">
-    @include('partials.formmatriculas',['btnText'=>'Registrar'])
-    <script>
-        // Obtener todos los elementos del formulario por su nombre
-var formElements = document.forms["form-registrar-matricula"].elements;
-
-// Iterar sobre los elementos y mostrar sus atributos
-for (var i = 0; i < formElements.length; i++) {
-    console.log("Nombre del elemento: " + formElements[i].name);
-    console.log("Tipo del elemento: " + formElements[i].type);
-    console.log("Valor del elemento: " + formElements[i].value);
-    console.log("ID del elemento: " + formElements[i].id);
-    // Puedes mostrar más atributos según sea necesario
-}
-
-    </script>
+    @include('partials.formmatriculas',['btnText'=>'Registrar','fechita'=>date('Y-m-d')])
+    <table>
+        <tr>
+            <th>Nombre Curso </th>
+        </tr>
+    </table>
     </form>
     <div id="error-message" class="alert alert-danger" style="display: none;"></div>
 
