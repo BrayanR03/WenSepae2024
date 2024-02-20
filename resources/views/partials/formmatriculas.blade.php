@@ -1,5 +1,4 @@
 @csrf
-
 <table>
     <tr>
         <th>FECHA DE REGISTRO</th>

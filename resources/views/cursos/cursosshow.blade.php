@@ -16,6 +16,9 @@
                 <th>Fecha Fin</th><td>{{$cursos->CursoFechaFin}}</td>
             </tr>
             <tr>
+                <th>Frecuencia</th><td>{{$cursos->Frecuencia}}</td>
+            </tr>
+            <tr>
                 <th>Hora Inicio</th><td>{{$cursos->CursoHoraInicio}}</td>
             </tr>
             <tr>

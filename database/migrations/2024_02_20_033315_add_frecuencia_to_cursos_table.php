@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('detallematricula', function (Blueprint $table) {
-            $table->bigInteger('MatriculaID');
-            $table->bigInteger('CursoID');
-            $table->decimal('Nota1',9,2)->nullable();
-            $table->decimal('Nota2',9,2)->nullable();
-            $table->timestamps();
+        Schema::table('cursos', function (Blueprint $table) {
+            $table->string('Frecuencia')->after('CursoFechaFin')->nullable();
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('detallematricula');
+        Schema::table('cursos', function (Blueprint $table) {
+            //
+        });
     }
 };

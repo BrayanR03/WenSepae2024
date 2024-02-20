@@ -25,6 +25,7 @@ class CreateCursoRequest extends FormRequest
             'CursoDescripcion'=>'required',
             'CursoFechaInicio'=>'required',
             'CursoFechaFin'=>'required',
+            'Frecuencia'=>'required',
             'CursoHoraInicio'=>'required',
             'CursoHoraFin'=>'required',
             'DocenteID'=>'required'
@@ -36,6 +37,7 @@ class CreateCursoRequest extends FormRequest
             'CursoDescripcion.required'=>'El Campo Descripcion es Obligatorio',
             'CursoFechaInicio.required'=>'El Campo Fecha Inicio es Obligatorio',
             'CursoFechaFin.required'=>'El Campo Fecha Fin es Obligatorio',
+            'Frecuencia.required'=>'Debes Seleccionar Una Frecuencia',
             'CursoHoraInicio.required'=>'El Campo Hora Inicio es Obligatorio',
             'CursoHoraFin.required'=>'El Campo Hora Fin es Obligatorio',
             'DocenteID.required'=>'El Campo DocenteID es Obligatorio'

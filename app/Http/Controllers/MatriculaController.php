@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Matricula;
+use App\Models\Curso;
+use App\Models\DetalleMatricula;
 use App\Http\Requests\CreateMatriculaRequest;
 class MatriculaController extends Controller
 {
@@ -21,9 +23,10 @@ class MatriculaController extends Controller
      */
     public function create()
     {
+        $cursos=Curso::get();
         return view('matriculas.matriculascreate',[
             'matriculas'=>new Matricula
-        ]);
+        ],compact('cursos'));
     }
 
     /**
@@ -32,8 +35,17 @@ class MatriculaController extends Controller
     public function store(CreateMatriculaRequest $request)
     {
         $matriculas=new Matricula($request->validated());
+        $cursoidd=explode(',',$request->ids_cursos);
         $matriculas->save();
+        $idMatriculaUltima=Matricula::max('MatriculaID');
+        foreach($cursoidd as $cursoID){
+            DetalleMatricula::create([
+                'MatriculaID'=>$idMatriculaUltima,
+                'CursoID'=>$cursoID
+            ]);
+        }
         return redirect()->route('matriculas.index');
+        
     }
 
     /**

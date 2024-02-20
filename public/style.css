@@ -1,0 +1,13 @@
+/* Estilos para el enlace con forma de + */
+.enlace-mas {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px; /* Centrar el contenido verticalmente */
+    text-align: center; /* Centrar el contenido horizontalmente */
+    background-color: red;
+    color: white;
+    font-size: 24px;
+    border-radius: 30%;
+    text-decoration: none; /* Quitar subrayado del enlace */
+}
