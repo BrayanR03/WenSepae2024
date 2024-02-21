@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Asistencia;
+use App\Models\Curso;
+use App\Models\DetalleMatricula;
 use App\Http\Requests\CreateAsistenciaRequest;
 class AsistenciaController extends Controller
 {
@@ -25,7 +27,7 @@ class AsistenciaController extends Controller
             'asistencias'=>new Asistencia
         ]);
     }
-
+    
     /**
      * Store a newly created resource in storage.
      */
@@ -82,4 +84,15 @@ class AsistenciaController extends Controller
         $asistencia->delete();
         return redirect()->route('asistencias.index');
     }
+
+    public function asistenciaalumnos($CursoID){
+        $cursos=Curso::find($CursoID);
+        return view('asistencia-alumnos',compact('cursos'));
+    }
+    public function registrarasistencia($CursoID)
+    {
+        $alumnosregistrados = DetalleMatricula::where('CursoID', $CursoID)->get();   
+        return view('registrar-asistencia');
+    }
+
 }

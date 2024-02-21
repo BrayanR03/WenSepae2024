@@ -40,7 +40,7 @@
         </table>
         <nav>
             <ul>
-                <li><a href="#">Asistencias</a></li>
+                <li><a href="{{route('asistencia.alumnos',$cursos->CursoID)}}">Asistencias</a></li>
                 <li><a href="#">Notas</a></li>
                 <li><a href="#">Alumnos Matriculados</a></li>
             </ul>

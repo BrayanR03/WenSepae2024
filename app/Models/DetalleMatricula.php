@@ -9,5 +9,6 @@ class DetalleMatricula extends Model
 {
     use HasFactory;
     protected $table='detallematriculas';
+    protected $primaryKey=['MatriculaID','CursoID'];
     protected $guarded=[];
 }
