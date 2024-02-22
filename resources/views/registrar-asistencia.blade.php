@@ -1,6 +1,7 @@
-@extends('layout-asistencia-notas')
+@extends('layout')
 @section('title','Asistencias')
-@section('contenido-adicional')
+@section('content')
     <h1>REGISTRAR ASISTENCIAS</h1>
-    <h2>ejemplo de registro</h2>
+    
+
 @endsection

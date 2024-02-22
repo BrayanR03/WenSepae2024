@@ -7,6 +7,7 @@ use App\Models\Asistencia;
 use App\Models\Curso;
 use App\Models\DetalleMatricula;
 use App\Http\Requests\CreateAsistenciaRequest;
+use Illuminate\Support\Facades\DB;
 class AsistenciaController extends Controller
 {
     /**
@@ -86,12 +87,25 @@ class AsistenciaController extends Controller
     }
 
     public function asistenciaalumnos($CursoID){
-        $cursos=Curso::find($CursoID);
-        return view('asistencia-alumnos',compact('cursos'));
+        
+
+        $alumnosregistrados=DB::select("CALL AlumnosRegistrado(?)",[$CursoID]);
+        return view('asistencia-alumnos',compact('alumnosregistrados'));
+        /*$alumnosregistrados = DetalleMatricula::where('CursoID', $CursoID)->get();
+        foreach($alumnosregistrados as $alumno){
+            dd($alumno->MatriculaID);
+        }*/
+
+        #dd($alumnosregistrados);
+        #$alumnosjson=$alumnosregistrados->toJson();
+        #return $alumnosjson;
+        //dd($alumnosjson);
+        //$cursos=Curso::find($CursoID);
+        /*return view('asistencia-alumnos',compact('alumnosregistrados'));*/
     }
-    public function registrarasistencia($CursoID)
+    public function registrarasistencia(Curso $cursos)
     {
-        $alumnosregistrados = DetalleMatricula::where('CursoID', $CursoID)->get();   
+        $alumnosregistrados = DetalleMatricula::where('CursoID', $cursos->CursoID)->get();   
         return view('registrar-asistencia');
     }
 
