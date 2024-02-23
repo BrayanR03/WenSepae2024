@@ -34,9 +34,11 @@ class AsistenciaController extends Controller
      */
     public function store(CreateAsistenciaRequest $request)
     {
+        
         $asistencias=new Asistencia($request->validated());
         $asistencias->save();
         return redirect()->route('asistencias.index');
+    
     }
 
     /**
