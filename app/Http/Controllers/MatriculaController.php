@@ -7,6 +7,7 @@ use App\Models\Matricula;
 use App\Models\Curso;
 use App\Models\DetalleMatricula;
 use App\Http\Requests\CreateMatriculaRequest;
+use Illuminate\Support\Facades\DB;
 class MatriculaController extends Controller
 {
     /**
@@ -34,17 +35,27 @@ class MatriculaController extends Controller
      */
     public function store(CreateMatriculaRequest $request)
     {
-        $matriculas=new Matricula($request->validated());
-        $cursoidd=explode(',',$request->ids_cursos);
-        $matriculas->save();
-        $idMatriculaUltima=Matricula::max('MatriculaID');
-        foreach($cursoidd as $cursoID){
-            DetalleMatricula::create([
-                'MatriculaID'=>$idMatriculaUltima,
-                'CursoID'=>$cursoID
-            ]);
+        $alumnoID=$request->input('AlumnoID');
+
+        $existenciaAlumno=Matricula::where('AlumnoID',$alumnoID)->exists();
+        if($existenciaAlumno){
+            //echo '<script>alert("Este Alumno ya Tiene una Matrícula Vigente!!");</script>';
+            return back()->with('mensaje','Este Alumno ya tiene una Matrícula Vigente');
+        }else{
+            $matriculas=new Matricula($request->validated());
+            $cursoidd=explode(',',$request->ids_cursos);
+            $matriculas->save();
+            $idMatriculaUltima=Matricula::max('MatriculaID');
+            foreach($cursoidd as $cursoID){
+                DB::insert("INSERT INTO detallematriculas(MatriculaID,CursoID)VALUES($idMatriculaUltima,$cursoID)");
+                /*DetalleMatricula::create([
+                    'MatriculaID'=>$idMatriculaUltima,
+                    'CursoID'=>intval($cursoID)
+                ]);*/
+            }
+            return redirect()->route('matriculas.index');
         }
-        return redirect()->route('matriculas.index');
+        
         
     }
 

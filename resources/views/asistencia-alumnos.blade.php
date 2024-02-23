@@ -29,19 +29,4 @@
     </table>
     <button type="submit">Guardar Asistencia</button>
 </form>
-<script>
-    // Seleccionar todos los radio buttons
-    const radioButtons = document.querySelectorAll('input[type="radio"]');
-
-    // Agregar un event listener a cada radio button
-    radioButtons.forEach(radioButton => {
-        radioButton.addEventListener('click', function() {
-            // Obtener el nombre del radio button seleccionado
-            const selectedName = radioButton.getAttribute('name');
-
-            // Desmarcar los radio buttons anteriores en la misma fila
-            
-        });
-    });
-</script>
 @endsection

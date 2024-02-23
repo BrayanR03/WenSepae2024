@@ -8,7 +8,7 @@
         <input type="radio" name="tipo_busqueda" value="AlumnoApellidos"> Por Apellidos <br><br>
     
         <label for="dni_apellidos">DNI o Apellidos:</label>
-        <input type="text" name="dni_apellidos" id="dni_apellidos">
+        <input type="text" name="dni_apellidos" autofocus id="dni_apellidos">
     
         <button type="submit">Buscar</button>
         
@@ -143,6 +143,7 @@
                             idsCursos.splice(index,1);
                         }
                         fila.remove(); // Eliminar la fila del curso de la segunda tabla
+                        document.getElementById('ids_cursos').value = idsCursos.join(',');
                     });
                 });
             });
