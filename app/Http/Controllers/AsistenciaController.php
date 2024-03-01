@@ -36,17 +36,35 @@ class AsistenciaController extends Controller
     {
         
         $matriculaAlumnoID=explode(',',$request->MatriculaID);
-        foreach($matriculaAlumnoID as $matriculaID){
-            
+        $asistenciasAlumnos=explode(',',$request->asistenciaAlumno);
+        if (count($matriculaAlumnoID) === count($asistenciasAlumnos)) {
+            // Itera sobre ambos arrays simultáneamente
+            foreach ($matriculaAlumnoID as $index => $matricula) {
+                $asistencia = $asistenciasAlumnos[$index];
+                $asistencias=new Asistencia($request->validated());
+                DB::insert("INSERT INTO asistencias(Asistencia,AsistenciaFecha,MatriculaID,CursoID)
+                         VALUES (?, ?, ?, ?)", [
+                        $asistencia,
+                        $asistencias->AsistenciaFecha,
+                        $matricula,
+                        $asistencias->CursoID
+                    ]);
+                // Puedes hacer aquí lo que necesites con cada matrícula y asistencia
+            }
+        } else {
+            echo "Los arrays no tienen la misma longitud.";
+        }
+        /*foreach($matriculaAlumnoID as $matriculaID){
+        dd($matriculaID);    
             $asistencias=new Asistencia($request->validated());
             DB::insert("INSERT INTO asistencias(Asistencia,AsistenciaFecha,MatriculaID,CursoID)
                          VALUES (?, ?, ?, ?)", [
-                        $asistencias->asistencia,
+                        'A',
                         $asistencias->AsistenciaFecha,
                         $matriculaID,
                         $asistencias->CursoID
                     ]);
-        }
+        }*/
         return redirect()->route('asistencias.index');
     
     }
