@@ -21,6 +21,7 @@ Route::resource('docentes','App\Http\Controllers\DocenteController')->names('doc
 Route::resource('cursos','App\Http\Controllers\CursoController')->names('cursos');
 Route::resource('matriculas','App\Http\Controllers\MatriculaController')->names('matriculas');
 Route::resource('asistencias','App\Http\Controllers\AsistenciaController')->names('asistencias');
+#Route::get('asistencias/crear','App\Http\Controllers\AsistenciaController@create')->name('asistencias.create');
 Route::get('cursosasignados','App\Http\Controllers\CursoController@cursosasignados')->name('cursos.asignado');
 Route::view('register','registromatricula')->name('register');
 Route::get('buscar-alumno', 'App\Http\Controllers\AlumnoController@buscarAlumno')->name('buscarAlumno');

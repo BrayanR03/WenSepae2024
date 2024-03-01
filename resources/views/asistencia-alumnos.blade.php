@@ -3,6 +3,7 @@
 @section('content')
 
 <h1>Registro de Asistencia</h1>
+@include('partials.validations-errors')
 <form action="{{route('asistencias.store')}}" method="POST">
     @csrf
     <table>

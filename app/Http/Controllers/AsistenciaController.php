@@ -35,8 +35,18 @@ class AsistenciaController extends Controller
     public function store(CreateAsistenciaRequest $request)
     {
         
-        $asistencias=new Asistencia($request->validated());
-        $asistencias->save();
+        $matriculaAlumnoID=explode(',',$request->MatriculaID);
+        foreach($matriculaAlumnoID as $matriculaID){
+            
+            $asistencias=new Asistencia($request->validated());
+            DB::insert("INSERT INTO asistencias(Asistencia,AsistenciaFecha,MatriculaID,CursoID)
+                         VALUES (?, ?, ?, ?)", [
+                        $asistencias->asistencia,
+                        $asistencias->AsistenciaFecha,
+                        $matriculaID,
+                        $asistencias->CursoID
+                    ]);
+        }
         return redirect()->route('asistencias.index');
     
     }
@@ -92,7 +102,9 @@ class AsistenciaController extends Controller
         
 
         $alumnosregistrados=DB::select("CALL AlumnosRegistrado(?)",[$CursoID]);
-        return view('asistencia-alumnos',compact('alumnosregistrados'));
+        return view('asistencias.asistenciascreate',[
+            'asistencias'=>new Asistencia
+        ],compact('alumnosregistrados'));
         /*$alumnosregistrados = DetalleMatricula::where('CursoID', $CursoID)->get();
         foreach($alumnosregistrados as $alumno){
             dd($alumno->MatriculaID);
