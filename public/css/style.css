@@ -1,0 +1,16 @@
+
+.submenu{
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: all .3s ease-in-out;
+}
+.options{
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+}
+.navBar-link{
+    cursor:pointer;
+
+}

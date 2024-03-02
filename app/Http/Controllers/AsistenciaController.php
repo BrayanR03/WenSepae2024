@@ -140,5 +140,8 @@ class AsistenciaController extends Controller
         $alumnosregistrados = DetalleMatricula::where('CursoID', $cursos->CursoID)->get();   
         return view('registrar-asistencia');
     }
+    public function editarasistencia(){
+        return view('editar-asistencias');
+    }
 
 }
