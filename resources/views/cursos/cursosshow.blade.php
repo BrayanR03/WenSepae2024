@@ -50,7 +50,7 @@
                                 <a href="{{route('asistencia.alumnos',$cursos->CursoID)}}">Registrar Asistencia</a>
                             </li>
                             <li class="navBar_link">
-                                <a href="{{route('editar-asistencia')}}">Editar Asistencias</a>
+                                <a href="{{route('editar-asistencia',$cursos->CursoID)}}">Editar Asistencias</a>
                             </li>
                         </ul>
                     </div>

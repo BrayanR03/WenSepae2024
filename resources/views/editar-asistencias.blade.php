@@ -7,9 +7,15 @@
             <th>Asistencias Registradas</th>
             <th></th>
         </tr>
-        <tr>
-            <td>2024-02-01</td>
-            <td><button>BOTON</button></td>
-        </tr>
+        @foreach ($fechasasistencias as $fechasasistencias)
+            
+            <tr>
+                <td>{{$fechasasistencias->Dia}}</td>
+                <td>
+                    {{$fechasasistencias->FechaAsistencia}}
+                </td>
+                <td><a href="#">Ver Aqui</a></td>
+            </tr>
+        @endforeach
     </table>
 @endsection

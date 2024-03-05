@@ -135,13 +135,15 @@ class AsistenciaController extends Controller
         //$cursos=Curso::find($CursoID);
         /*return view('asistencia-alumnos',compact('alumnosregistrados'));*/
     }
+    /*
     public function registrarasistencia(Curso $cursos)
     {
         $alumnosregistrados = DetalleMatricula::where('CursoID', $cursos->CursoID)->get();   
         return view('registrar-asistencia');
-    }
-    public function editarasistencia(){
-        return view('editar-asistencias');
+    }*/
+    public function editarasistencia($CursoID){
+        $fechasasistencias=DB::select("CALL FechasAsistenciasCurso(?)",[$CursoID]);
+        return view('editar-asistencias',compact('fechasasistencias'));
     }
 
 }

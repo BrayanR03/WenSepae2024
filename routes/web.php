@@ -26,8 +26,8 @@ Route::get('cursosasignados','App\Http\Controllers\CursoController@cursosasignad
 Route::view('register','registromatricula')->name('register');
 Route::get('buscar-alumno', 'App\Http\Controllers\AlumnoController@buscarAlumno')->name('buscarAlumno');
 Route::get('asistencia-alumnos/{CursoID}','App\Http\Controllers\AsistenciaController@asistenciaalumnos')->name('asistencia.alumnos');
-Route::get('registrar-asistencia/{cursos}','App\Http\Controllers\AsistenciaController@registrarasistencia')->name('registrar-la-asistencia');
-Route::get('editar-asistencias','App\Http\Controllers\AsistenciaController@editarasistencia')->name('editar-asistencia');
+#Route::get('registrar-asistencia/{cursos}','App\Http\Controllers\AsistenciaController@registrarasistencia')->name('registrar-la-asistencia');
+Route::get('editar-asistencias/{cursos}','App\Http\Controllers\AsistenciaController@editarasistencia')->name('editar-asistencia');
 /*
 Route::get('apoderados','App\Http\Controllers\ApoderadoController@index')->name('apoderado.index');
 Route::get('apoderados/crear','App\Http\Controllers\ApoderadoController@create')->name('apoderado.create');
