@@ -14,7 +14,7 @@
                 <td>
                     {{$fechasasistencias->FechaAsistencia}}
                 </td>
-                <td><a href="#">Ver Aqui</a></td>
+                <td><a href="{{route('asistencias.edit',$fechasasistencias->FechaAsistencia)}}">Ver Aqui</a></td>
             </tr>
         @endforeach
     </table>

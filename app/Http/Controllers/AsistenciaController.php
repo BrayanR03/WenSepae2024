@@ -82,11 +82,11 @@ class AsistenciaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Asistencia $asistencia)
+    public function edit($FechaAsistencia)
     {
-        return view('asistencias.asistenciasedit',[
-            'asistencias'=>$asistencia
-        ]);
+        $alumnosregistrados=DB::select('CALL AlumnosAsistenciasFecha(?)',[$FechaAsistencia]);
+        $asistencias=DB::select('CALL AlumnosAsistenciasFecha(?)',[$FechaAsistencia]);
+        return view('asistencias.asistenciasedit',compact('alumnosregistrados','asistencias'));
     }
 
     /**
