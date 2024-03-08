@@ -21,7 +21,7 @@
             <input type="hidden" name="asistencias[{{$alumno->AlumnoID}}][MatriculaID]" value="{{ $alumno->Matricula }}">
             <input type="hidden" name="asistencias[{{$alumno->AlumnoID}}][CursoID]" value="{{ $alumno->CursoID }}">
             <input type="radio" class="Asistencia" id="Asistencia" name="Asistencia[{{$alumno->AlumnoID}}]" value="A"> A
-            <input type="radio" class="Asistencia" id="Asistencia" name="Asistencia[{{$alumno->AlumnoID}}]" value="F"> F
+            <input type="radio" class="Asistencia" id="Asistencia" name="Asistencia[{{$alumno->AlumnoID}}]" checked value="F"> F
             <input type="radio" class="Asistencia" id="Asistencia" name="Asistencia[{{$alumno->AlumnoID}}]" value="J"> J
         </td>
     </tr>
@@ -29,17 +29,17 @@
 </table>
 <table>
     <tr>
-        <td><input type="hidden" name="asistenciaAlumno" id="asistenciaAlumno" readonly></td>
+        <td><input type="text" name="asistenciaAlumno" id="asistenciaAlumno" readonly></td>
     </tr>
     <tr>
         <th>Fecha Asistencia</th>
         <td><input type="date" name="AsistenciaFecha" id="AsistenciaFecha" value="{{old('AsistenciaFecha',date('Y-m-d'))}}"></td>
     </tr>
     <tr>
-        <td><input type="hidden" name="MatriculaID" id="MatriculaID" value="{{old('MatriculaID',$asistencias->MatriculaID)}}"></td>
+        <td><input type="text" name="MatriculaID" id="MatriculaID" value="{{old('MatriculaID',$asistencias->MatriculaID)}}"></td>
     </tr>
     <tr>
-        <td><input type="hidden" name="CursoID" id="CursoID" value="{{old('CursoID',$asistencias->CursoID)}}"></td>
+        <td><input type="text" name="CursoID" id="CursoID" value="{{old('CursoID',$asistencias->CursoID)}}"></td>
     </tr>
     <tr>
         <td><button>{{$btnText}}</button></td>
@@ -73,6 +73,45 @@
                 var matriculaID = this.closest('tr').querySelector('.matriculaidalumno').textContent;
                 var cursoID = this.closest('tr').querySelector('td:first-child').textContent;
                 var fechaAsistencia = document.getElementById('AsistenciaFecha').value;
+                
+                // Encuentra el índice de la matrícula en el array
+                var index = idsMatriculasAlumnos.indexOf(matriculaID);
+                
+                // Si la matrícula aún no ha sido agregada, la añadimos al array
+                if (index === -1) {
+                    idsMatriculasAlumnos.push(matriculaID);
+                }
+                
+                // Almacenamos la asistencia en el índice correspondiente al array
+                asistenciasAlumnos[index] = radio.value;
+                
+                // Asignamos el valor al campo asistenciaAlumno
+                resultado.value = asistenciasAlumnos.join(',');
+                
+                // Actualizamos los campos MatriculaID y CursoID
+                document.getElementById('MatriculaID').value = idsMatriculasAlumnos.join(',');
+                document.getElementById('CursoID').value = cursoID;
+                
+                console.log(idsMatriculasAlumnos);
+                console.log(cursoID);
+                console.log(fechaAsistencia);
+            });
+        });
+    });
+</script>
+
+<!--<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var asistenciaRadios = document.querySelectorAll('.Asistencia');
+        let idsMatriculasAlumnos=[];
+        let asistenciasAlumnos=[];
+        let opciones=document.querySelectorAll('input[type="radio"]');
+        let resultado=document.getElementById('asistenciaAlumno');
+        asistenciaRadios.forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                var matriculaID = this.closest('tr').querySelector('.matriculaidalumno').textContent;
+                var cursoID = this.closest('tr').querySelector('td:first-child').textContent;
+                var fechaAsistencia = document.getElementById('AsistenciaFecha').value;
                 if (!idsMatriculasAlumnos.includes(matriculaID)) {
                     idsMatriculasAlumnos.push(matriculaID);
                     resultado.value=radio.value;
@@ -89,4 +128,4 @@
             });
         });
     });
-</script>
+</script>-->

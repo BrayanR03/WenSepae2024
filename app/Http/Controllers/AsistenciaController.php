@@ -85,8 +85,8 @@ class AsistenciaController extends Controller
     public function edit($FechaAsistencia)
     {
         $alumnosregistrados=DB::select('CALL AlumnosAsistenciasFecha(?)',[$FechaAsistencia]);
-        $asistencias=DB::select('CALL AlumnosAsistenciasFecha(?)',[$FechaAsistencia]);
-        return view('asistencias.asistenciasedit',compact('alumnosregistrados','asistencias'));
+        #$asistencias=DB::select('CALL AlumnosAsistenciasFecha(?)',[$FechaAsistencia]);
+        return view('asistencias.asistenciasedit',compact('alumnosregistrados'));
     }
 
     /**

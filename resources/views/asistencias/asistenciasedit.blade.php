@@ -36,20 +36,55 @@
     </table>
 
     <!-- Movemos esta parte fuera del bucle -->
-    @foreach ($asistencias as $asistencia)
-<tr>
-    <td><input type="text" name="asistenciaAlumno" id="asistenciaAlumno" value="{{ $asistencia->Asistencia }}" readonly></td>
-</tr>
-<tr>
-    <td><input type="text" name="MatriculaID" id="MatriculaID" value="{{ $asistencia->Matricula }}"></td>
-</tr>
-<td>
-    <td><input type="text" name="CursoID" id="CursoID" value="{{ $asistencia->CursoID }}"></td>
-</td>
-@endforeach
+    <table>
+        <tr>
+            <td><input type="text" name="asistenciaAlumno" id="asistenciaAlumno" readonly></td>
+        </tr>
+        <tr>
+            <th hidden>Fecha Asistencia</th>
+            <td><input hidden type="date" name="AsistenciaFecha" id="AsistenciaFecha" value="{{old('AsistenciaFecha',date('Y-m-d'))}}"></td>
+        </tr>
+        <tr>
+            <td><input type="text" name="MatriculaID" id="MatriculaID"></td>
+        </tr>
+        <tr>
+            <td><input type="text" name="CursoID" id="CursoID"></td>
+        </tr>    
+    </table>
+
     <button type="submit">Actualizar</button>
     </form>
-
+    
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var asistenciaRadios = document.querySelectorAll('.Asistencia');
+        let idsMatriculasAlumnos=[];
+        let asistenciasAlumnos=[];
+        let opciones=document.querySelectorAll('input[type="radio"]');
+        let resultado=document.getElementById('asistenciaAlumno');
+        asistenciaRadios.forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                var matriculaID = this.closest('tr').querySelector('.matriculaidalumno').textContent;
+                var cursoID = this.closest('tr').querySelector('td:first-child').textContent;
+                var fechaAsistencia = document.getElementById('AsistenciaFecha').value;
+                if (!idsMatriculasAlumnos.includes(matriculaID)) {
+                    idsMatriculasAlumnos.push(matriculaID);
+                    resultado.value=radio.value;
+                    asistenciasAlumnos.push(radio.value);
+                    document.getElementById('asistenciaAlumno').value=asistenciasAlumnos.join(',');
+                }
+            
+                document.getElementById('MatriculaID').value = idsMatriculasAlumnos;
+                document.getElementById('CursoID').value = cursoID;
+                //document.getElementById('asistenciaAlumno').value=asistenciasAlumnos;
+                console.log(idsMatriculasAlumnos);
+                console.log(cursoID);
+                console.log(fechaAsistencia);
+            });
+        });
+    });
+</script>
+<!--
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var asistenciaRadios = document.querySelectorAll('.Asistencia');
@@ -64,20 +99,18 @@
                     var fechaAsistencia = document.getElementById('AsistenciaFecha').value;
                     if (!idsMatriculasAlumnos.includes(matriculaID)) {
                         idsMatriculasAlumnos.push(matriculaID);
-                        resultado.value = idsMatriculasAlumnos.join(',') + ',' + cursoID + ',' + radio.value;
+                        resultado.value=radio.value;
                         asistenciasAlumnos.push(radio.value);
-                    } else {
-                        var index = idsMatriculasAlumnos.indexOf(matriculaID);
-                        asistenciasAlumnos[index] = radio.value;
-                        resultado.value = idsMatriculasAlumnos.join(',') + ',' + cursoID + ',' + asistenciasAlumnos.join(',');
+                        document.getElementById('asistenciaAlumno').value=asistenciasAlumnos.join(',');
                     }
-                    /**/
                 
+                    document.getElementById('MatriculaID').value = matriculaID;
+                    document.getElementById('CursoID').value = cursoID;
                     console.log(idsMatriculasAlumnos);
                     console.log(cursoID);
                     console.log(fechaAsistencia);
                 });
             });
         });
-    </script>
+    </script>-->
 @endsection
